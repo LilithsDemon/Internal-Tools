@@ -50,30 +50,73 @@ if ($_SESSION['auth'] == false) {
         ?>
     </main>
 
-    <?php 
-    if($_SESSION['admin'] == 1) {
-    ?>
-    <div class="modal fade" id="settings_modal"
-        aria-labelledby="Modal form for changing settings" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Settings</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Create new Stakeholder</p>
-                    <p>Create new team member</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <?php
+    if ($_SESSION['admin'] == 1) {
+        ?>
+        <div class="modal fade" id="settings_modal" aria-labelledby="Modal form for changing settings" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Settings</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex justify-content-center align-items-center">
+                        <button class="btn button" data-bs-target="#create_user_modal" data-bs-toggle="modal">Create new
+                            user</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <?php
+
+        <div class="modal fade" id="create_user_modal" aria-labelledby="Modal form for changing settings"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create User</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex justify-content-center align-items-center">
+                        <form class="d-flex flex-column gap-4">
+                            <div class="d-flex gap-2">
+                                <input type="text" class="form-control" id="user_name" name="user_title"
+                                    placeholder="Username..." required>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <input type="text" class="form-control" id="user_first_name" name="user_first_name"
+                                    placeholder="First Name..." required>
+                                <input type="text" class="form-control" id="user_last_name" name="user_last_name"
+                                    placeholder="Last Name..." required>
+                            </div>
+                            <div class="d-flex flex-column gap-2">
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="stakeholder" name="stakeholder">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Stakeholder?
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="admin" name="admin">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Admin?
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+                        <button type="button" class="btn btn-primary">Create User</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
     }
-    ?> 
+    ?>
 
 </body>
 <script src="js/main.js"></script>
