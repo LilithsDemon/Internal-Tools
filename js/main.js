@@ -14,6 +14,10 @@ $('#stakeholder_meetings').click(function(){
     $('main').load('./php/Components/stakeholder_meetings.php');
 });
 
+$('#scrum_meetings').click(function(){ 
+    $('main').load('./php/Components/scrum_meetings.php');
+});
+
 function loadPage(page)
 {
     $('main').load('./php/Components/' + page + '.php');

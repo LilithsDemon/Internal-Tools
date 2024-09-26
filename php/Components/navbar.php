@@ -14,7 +14,7 @@
                     <span class="nav_name">Dashboard</span>
                 </a>
                 <?php
-                    if($_SESSION['stakeholder'] == 1) { 
+                    if($_SESSION['stakeholder'] == 0) { 
                 ?>
                 <a id="scrum_meetings" href="#" class="nav_link">
                     <i class='bx bx-chalkboard nav_icon'> </i>
