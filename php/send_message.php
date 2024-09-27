@@ -1,6 +1,72 @@
 <?php
 
-if(isset($_POST['user_id']) && isset($_POST['message']))
+function sendMessageToEveryone($message)
+{
+    require_once('./include/_connect.php');
+    include_once('./include/_execute.php');
+    require_once('./include/_bdie.php');
+
+    $SQL = "SELECT `UserID` FROM `Users`";
+
+    $result = executeCommand($SQL);
+
+    if($result)
+    {
+        while($row = $result->fetch_assoc())
+        {
+            sendMessageTo($row['UserID'], $message);
+        }
+        return true;
+    }
+    return false;
+}
+
+function sendMessageToStakeholders($message)
+{
+    require_once('./include/_connect.php');
+    include_once('./include/_execute.php');
+    require_once('./include/_bdie.php');
+
+    $SQL = "SELECT `UserID` FROM `Users` WHERE `Stakeholder` = 1";
+
+    $result = executeCommand($SQL);
+
+    if($result)
+    {
+        while($row = $result->fetch_assoc())
+        {
+            sendMessageTo($row['UserID'], $message);
+        }
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function sendMessageToTeamMembers($message)
+{
+    require_once('./include/_connect.php');
+    include_once('./include/_execute.php');
+    require_once('./include/_bdie.php');
+
+    $SQL = "SELECT `UserID` FROM `Users` WHERE `Stakeholder` = 0";
+
+    $result = executeCommand($SQL);
+
+    if($result)
+    {
+        while($row = $result->fetch_assoc())
+        {
+            sendMessageTo($row['UserID'], $message);
+        }
+        return true;
+    }
+    return false;
+}
+
+function sendMessageTo($user_id, $message)
 {
     require_once('./include/_connect.php');
     include_once('./include/_execute.php');
@@ -8,18 +74,11 @@ if(isset($_POST['user_id']) && isset($_POST['message']))
 
     $SQL = "INSERT INTO `Messages`(`MessageID`, `UserID`, `Message`, `Date`) VALUES (null,?,?,?)";
 
-    $result = executeCommand($SQL, 'iss', array($_POST['user_id'], $_POST['message'], date("Y-m-d")));
+    $result = executeCommand($SQL, 'iss', array($user_id, $message, date("Y-m-d")));
 
     if($result)
     {
-        DieWithStatus("Message sent successfully", 200);
+        return true;
     }
-    else
-    {
-        DieWithStatus("Failed to send message", 500);
-    }
-}
-else
-{
-    DieWithStatus("Missing Form information", 400);
+    return false;
 }

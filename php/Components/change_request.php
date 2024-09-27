@@ -42,6 +42,16 @@ if(!isset($_SESSION)) {
                 <label for="request_assigner">Request Made By:</label>
                 <?php echo "<input type='text' class='form-control' id='request_assigner' name='request_assigner' value='" . $_SESSION['firstName'] . " " . $_SESSION['lastName'] . "' disabled>"; ?>
             </div>
+            <div class="d-flex flex-column gap-1">
+                <label for="request_priority"></label>
+                <select class="form-select" id="request_priority" name="request_priority" required>
+                    <option value="" selected disabled>Select Priority Level</option>
+                    <option value="1">Low Priority</option>
+                    <option value="2">Medium Priority</option>
+                    <option value="3">High Priority</option>
+                    <option value="4">Essential</option>
+                </select>
+            </div>
             <div class="d-flex">
                 <textarea rows="4" class="form-control" id="request_description" name="request_description" placeholder="Request Description..." required></textarea>
             </div>
