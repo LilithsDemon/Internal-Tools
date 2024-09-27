@@ -6,12 +6,6 @@ if(isset($_POST['request_title']) && isset($_POST['request_priority']) && isset(
     require_once('./include/_bdie.php');
     include_once('send_message.php');
 
-    $request_title = $_POST['request_title'];
-    $request_priority = $_POST['request_priority'];
-    $request_description = $_POST['request_description'];
-    $request_budget = $_POST['request_budget'];
-    $request_time = $_POST['request_time'];
-
     $SQL = "INSERT INTO `Change_Request`(`Request_ID`, `Request_Name`, `Request_Date`, `Request_By`, `Priority`, `Request_Description`, `Cost_Adjustment`, `Time_Adjustment`, `Approved`, `ApprovedBy`) VALUES (null,?,?,?,?,?,?,?,0,null)";
 
     $result = executeCommand($conn, $SQL, 'ssssss', $_POST['request_title'], date('Y-m-d'), $_SESSION['userID'], $_POST['request_priority'], $_POST['request_description'], $_POST['request_budget'], $_POST['request_time']);
