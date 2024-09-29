@@ -8,7 +8,7 @@ if(isset($_POST['request_title']) && isset($_POST['request_priority']) && isset(
 
     $SQL = "SELECT `Request_ID`, `Request_Name`, `Request_Description`, `Request_Date` FROM `Change_Request`";
 
-    $result = executeCommandNoParams($conn, $SQL);
+    $result = executeCommandNoParams($SQL);
 
     if($result)
     {
