@@ -2,12 +2,12 @@
 
 function getMessages($UserID)
 {
-    require_once('./include/_connect.php');
-    include_once('./include/_execute.php');
-    require_once('./include/_bdie.php');
+    require_once('../include/_connect.php');
+    include_once('../include/_execute.php');
+    require_once('../include/_bdie.php');
 
-    $SQL = "SELECT `Message`, `Date` FROM `Messages` WHERE `UserID` = ?";
-    $result = executeCommand($SQL, 'i', $UserID);
+    $SQL = "SELECT `Message`, `Date` FROM `Messages` WHERE `UserID` = ? ORDER BY `Date` DESC";
+    $result = executeCommand($SQL, 'i', [$UserID]);
 
     if($result)
     {

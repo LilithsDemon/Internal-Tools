@@ -6,7 +6,7 @@
 <div class="change_request d-flex flex-column w-75">
     <div class="requests d-flex flex-column gap-2">
         <?php
-            getMessages($_SESSION['UserID']);
+            getMessages($_SESSION['userID']);
         ?>
     </div>
 </div>
