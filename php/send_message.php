@@ -8,7 +8,7 @@ function sendMessageToEveryone($message)
 
     $SQL = "SELECT `UserID` FROM `Users`";
 
-    $result = executeCommand($SQL);
+    $result = executeCommandNoParams($SQL);
 
     if($result)
     {
@@ -23,13 +23,13 @@ function sendMessageToEveryone($message)
 
 function sendMessageToStakeholders($message)
 {
-    require_once('./include/_connect.php');
-    include_once('./include/_execute.php');
-    require_once('./include/_bdie.php');
+    require_once('../include/_connect.php');
+    include_once('../include/_execute.php');
+    require_once('../include/_bdie.php');
 
     $SQL = "SELECT `UserID` FROM `Users` WHERE `Stakeholder` = 1";
 
-    $result = executeCommand($SQL);
+    $result = executeCommandNoParams($SQL);
 
     if($result)
     {
@@ -53,7 +53,7 @@ function sendMessageToTeamMembers($message)
 
     $SQL = "SELECT `UserID` FROM `Users` WHERE `Stakeholder` = 0";
 
-    $result = executeCommand($SQL);
+    $result = executeCommandNoParams($SQL);
 
     if($result)
     {
