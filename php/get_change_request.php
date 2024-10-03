@@ -36,26 +36,10 @@ if($result)
         <?php
 
     }
-
-    ?>
-        <div class="modal fade" id="request_approval_modal" aria-labelledby="Modal form for looking at change request" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex justify-content-center align-items-center">
-                        <button class="btn button" data-bs-target="#create_user_modal" data-bs-toggle="modal">Create new button</button>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <?php
+    /* New idea for how the modal will work
+    When pressing on a button it will call a function that will pass the ID of the request to the modal
+    The modal will then use the ID to get the correct data and put it into the modal using load like doing with main
+    */
 }
 else
 {

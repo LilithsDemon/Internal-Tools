@@ -7,7 +7,7 @@ if(isset($_POST['meeting_title']) && isset($_POST['meeting_notes']))
     require_once('./include/_bdie.php');
     include_once('send_message.php');
 
-    $SQL = "INSERT INTO `Stakeholder_Meeting`(`MeetingID`, `MeetingTitle`, `MeetingDate`, `MeetingNotes`, `Atendees`) VALUES (null,?,?,?,null)";
+    $SQL = "INSERT INTO `Stakeholder_Meeting`(`MeetingID`, `MeetingTitle`, `MeetingDate`, `MeetingNotes`) VALUES (null,?,?,?)";
 
     $result = executeCommand($SQL, 'sss', array($_POST['meeting_title'], date('Y-m-d'), $_POST['meeting_notes']));
 

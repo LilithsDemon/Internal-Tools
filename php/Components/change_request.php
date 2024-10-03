@@ -8,21 +8,6 @@ if(!isset($_SESSION)) {
     <button type="button" class="btn button" id="add_button" onclick="loadDate()" data-bs-toggle="modal" data-bs-target="#change_request_modal">
         Create New Change Request
     </button>
-
-    <div class="requests d-flex flex-column gap-2">
-        <div class="card text-center request_card">
-            <div class="card-header">
-                Change Request Name
-            </div>
-            <div class="card-body">
-                <p class="card-text">Change Request description</p>
-            </div>
-            <div class="card-footer text-body-secondary">
-                2 days ago
-            </div>
-        </div>
-
-    </div>
 </div>
 
 <div class="modal fade" id="change_request_modal" data-bs-backdrop="static" aria-labelledby="Modal form for creating a new change request" aria-hidden="true">

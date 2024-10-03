@@ -11,24 +11,9 @@ if(!isset($_SESSION)) {
         <button type="button" class="btn button" id="add_button" onclick="loadDate()" data-bs-toggle="modal" data-bs-target="#stakeholder_meeting_modal">
             Create New StakeHolder Meeting
         </button>
-        <?php
+    <?php
     }
     ?>
-
-    <div class="requests d-flex flex-column gap-2">
-        <div class="card text-center request_card">
-            <div class="card-header">
-                Request Name
-            </div>
-            <div class="card-body">
-                <p class="card-text">Request description</p>
-            </div>
-            <div class="card-footer text-body-secondary">
-                2 days ago
-            </div>
-        </div>
-
-    </div>
 </div>
 
 <?php

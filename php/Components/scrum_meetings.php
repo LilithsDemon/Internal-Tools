@@ -26,21 +26,6 @@ if($_SESSION['stakeholder'] == 1) {
         <?php
     }
     ?>
-
-    <div class="requests d-flex flex-column gap-2">
-        <div class="card text-center request_card">
-            <div class="card-header">
-                Scrum Title
-            </div>
-            <div class="card-body">
-                <p class="card-text">Scrum Description</p>
-            </div>
-            <div class="card-footer text-body-secondary">
-                2 days ago
-            </div>
-        </div>
-
-    </div>
 </div>
 
 <?php
