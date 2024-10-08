@@ -20,7 +20,7 @@ if($_SESSION['stakeholder'] == 1) {
     <?php
     if ($_SESSION['admin'] == 1) {
         ?>
-        <button type="button" class="btn button" id="add_button" onclick="loadDate()" data-bs-toggle="modal" data-bs-target="#stakeholder_meeting_modal">
+        <button type="button" class="btn button" id="add_button" data-bs-toggle="modal" data-bs-target="#stakeholder_meeting_modal">
             Create New Scrum Meeting
         </button>
         <?php

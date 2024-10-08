@@ -14,13 +14,13 @@ if($result)
         // This needs finishing to work fully
         if($_SESSION['stakeholder'] == 1)
         {
-            echo "<button class='card text-center request_card' data-bs-toggle='request_approval_modal' onclick='stakeholder_request_modal(" . $row['Request_ID'] .")>";
+            echo "<button class='card text-center request_card' data-bs-toggle='change_request_review_modal' onclick='change_request(" . $row['Request_ID'] .")>";
         ?>
         <?php
         }
         else
         {
-            echo "<button class='card text-center request_card' data-bs-toggle='request_approval_modal' onclick='team_request_modal(" . $row['Request_ID'] .")>";
+            echo "<button class='card text-center request_card' data-bs-toggle='change_request_review_modal' onclick='change_modal(" . $row['Request_ID'] .")>";
         }
         ?>
                 <div class="card-header">
@@ -36,15 +36,17 @@ if($result)
         <?php
 
     }
-    /* New idea for how the modal will work
-    When pressing on a button it will call a function that will pass the ID of the request to the modal
-    The modal will then use the ID to get the correct data and put it into the modal using load like doing with main
-    */
+    ?>
+
+    <div class="modal fade" id="change_request_review_modal" data-bs-backdrop="static" aria-labelledby="Modal form for creating a new change request" aria-hidden="true">
+
+    </div>
+    <?php
 }
 else
 {
     ?>
-        <h1>Sorry, no  have been found yet!</h1>
+        <h1>Sorry, no change requests have been sent yet!</h1>
     <?php
 }  
 ?>

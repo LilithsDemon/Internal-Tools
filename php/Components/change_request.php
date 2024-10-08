@@ -5,7 +5,7 @@ if(!isset($_SESSION)) {
 ?>
 
 <div class="change_request d-flex flex-column w-75">
-    <button type="button" class="btn button" id="add_button" onclick="loadDate()" data-bs-toggle="modal" data-bs-target="#change_request_modal">
+    <button type="button" class="btn button" id="add_button" data-bs-toggle="modal" data-bs-target="#change_request_modal">
         Create New Change Request
     </button>
 </div>
