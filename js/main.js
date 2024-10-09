@@ -37,11 +37,13 @@ function change_request(id)
 }
 
 $('#approve_request_btn').click(function(){
+    let review_notes = $('#review_notes').val();
     $.ajax({
         type: 'POST',
         url: '../php/approve_request.php',
         data: {
             id: current_id,
+            notes: review_notes,
         },
         success: function(response){
             Swal.fire({
@@ -65,11 +67,13 @@ $('#approve_request_btn').click(function(){
 });
 
 $('#reject_request_btn').click(function(){
+    let review_notes = $('#review_notes').val();
     $.ajax({
         type: 'POST',
         url: '../php/reject_request.php',
         data: {
             id: current_id,
+            notes: review_notes,
         },
         success: function(response){
             Swal.fire({
