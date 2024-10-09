@@ -18,7 +18,7 @@ if(!isset($_SESSION)) {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="d-flex flex-column gap-4">
+        <form id="change_request_form" class="d-flex flex-column gap-4">
             <div class="d-flex gap-2">
                 <input type="text" class="form-control" id="request_title" name="request_title" placeholder="Request Title..." required>
                 <input type="date" class="form-control" id="prefilled_date" name="request_date" disabled>
@@ -48,7 +48,7 @@ if(!isset($_SESSION)) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-        <button type="button" class="btn btn-primary">Send Request</button>
+        <button type="button" id="send_request" class="btn button">Send Request</button>
       </div>
     </div>
   </div>

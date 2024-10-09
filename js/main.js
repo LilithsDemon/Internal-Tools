@@ -20,6 +20,32 @@ $('#scrum_meetings').click(function(){
     $('main').load('./php/Components/scrum_meetings.php');
 });
 
+$('#send_request').click(function(){
+    $.ajax({
+        type: 'POST',
+        url: './php/send_change_request.php',
+        data: $('#change_request_form').serialize(),
+        success: function(response){
+            Swal.fire({
+                title: "Request Sent Successfully",
+                text: data.responseText,
+                icon: "success",
+                heightAuto: false,
+                color: "white",
+            });
+        },
+        error: function(response){
+            Swal.fire({
+                title: "Error Sending Request",
+                text: data.responseText,
+                icon: "error",
+                heightAuto: false,
+                color: "white",
+            });
+        }
+    });
+});
+
 function loadPage(page)
 {
     $('main').load('./php/Components/' + page + '.php');
