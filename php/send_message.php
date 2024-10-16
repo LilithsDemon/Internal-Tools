@@ -2,10 +2,6 @@
 
 function sendMessageToEveryone($message)
 {
-    require_once('./include/_connect.php');
-    include_once('./include/_execute.php');
-    require_once('./include/_bdie.php');
-
     $SQL = "SELECT `UserID` FROM `Users`";
 
     $result = executeCommandNoParams($SQL);
@@ -23,10 +19,6 @@ function sendMessageToEveryone($message)
 
 function sendMessageToStakeholders($message)
 {
-    require_once('../include/_connect.php');
-    include_once('../include/_execute.php');
-    require_once('../include/_bdie.php');
-
     $SQL = "SELECT `UserID` FROM `Users` WHERE `Stakeholder` = 1";
 
     $result = executeCommandNoParams($SQL);
@@ -47,10 +39,6 @@ function sendMessageToStakeholders($message)
 
 function sendMessageToTeamMembers($message)
 {
-    require_once('./include/_connect.php');
-    include_once('./include/_execute.php');
-    require_once('./include/_bdie.php');
-
     $SQL = "SELECT `UserID` FROM `Users` WHERE `Stakeholder` = 0";
 
     $result = executeCommandNoParams($SQL);
@@ -68,10 +56,6 @@ function sendMessageToTeamMembers($message)
 
 function sendMessageTo($user_id, $message)
 {
-    require_once('./include/_connect.php');
-    include_once('./include/_execute.php');
-    require_once('./include/_bdie.php');
-
     $SQL = "INSERT INTO `Messages`(`MessageID`, `UserID`, `Message`, `Date`) VALUES (null,?,?,?)";
 
     $result = executeCommand($SQL, 'iss', array($user_id, $message, date("Y-m-d")));

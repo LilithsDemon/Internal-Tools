@@ -21,11 +21,11 @@ if(!isset($_SESSION)) {
         <form id="change_request_form" class="d-flex flex-column gap-4">
             <div class="d-flex gap-2">
                 <input type="text" class="form-control" id="request_title" name="request_title" placeholder="Request Title..." required>
-                <input type="date" class="form-control" id="prefilled_date" name="request_date" disabled>
+                <input type="date" class="form-control" id="prefilled_date" disabled>
             </div>
             <div class="d-flex flex-column gap-1">
                 <label for="request_assigner">Request Made By:</label>
-                <?php echo "<input type='text' class='form-control' id='request_assigner' name='request_assigner' value='" . $_SESSION['firstName'] . " " . $_SESSION['lastName'] . "' disabled>"; ?>
+                <?php echo "<input type='text' class='form-control' id='request_assigner' value='" . $_SESSION['firstName'] . " " . $_SESSION['lastName'] . "' disabled>"; ?>
             </div>
             <div class="d-flex flex-column gap-1">
                 <label for="request_priority"></label>
@@ -41,14 +41,14 @@ if(!isset($_SESSION)) {
                 <textarea rows="4" class="form-control" id="request_description" name="request_description" placeholder="Request Description..." required></textarea>
             </div>
             <div class="d-flex flex-column gap-2">
-                <input type="text" class="form-control" id="request_budget" placeholder="Cost Adjustment" required>
-                <input type="text" class="form-control" id="request_time" placeholder="Time adjustment" required>
+                <input type="text" class="form-control" id="request_budget" name="request_budget" placeholder="Cost Adjustment" required>
+                <input type="text" class="form-control" id="request_time" name="request_time" placeholder="Time adjustment" required>
             </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-        <button type="button" id="send_request" class="btn button">Send Request</button>
+        <button type="button" id="send_request" class="btn button" data-bs-dismiss="modal">Send Request</button>
       </div>
     </div>
   </div>

@@ -20,12 +20,14 @@ $('#scrum_meetings').click(function(){
     $('main').load('./php/Components/scrum_meetings.php');
 });
 
-$('#send_request').click(function(){
+
+$('main').on('click', '#send_request', function () {
+    console.log($("#change_request_form").serialize())
     $.ajax({
-        type: 'POST',
-        url: './php/send_change_request.php',
-        data: $('#change_request_form').serialize(),
-        success: function(response){
+        type: "POST",
+        url: "./php/send_change_request.php",
+        data: $("#change_request_form").serialize(),
+        success: function(data) {
             Swal.fire({
                 title: "Request Sent Successfully",
                 text: data.responseText,
@@ -34,7 +36,7 @@ $('#send_request').click(function(){
                 color: "white",
             });
         },
-        error: function(response){
+        error: function(data){
             Swal.fire({
                 title: "Error Sending Request",
                 text: data.responseText,
@@ -42,7 +44,7 @@ $('#send_request').click(function(){
                 heightAuto: false,
                 color: "white",
             });
-        }
+        },
     });
 });
 
@@ -66,7 +68,7 @@ $('#approve_request_btn').click(function(){
     let review_notes = $('#review_notes').val();
     $.ajax({
         type: 'POST',
-        url: '../php/approve_request.php',
+        url: './php/approve_request.php',
         data: {
             id: current_id,
             notes: review_notes,
@@ -96,7 +98,7 @@ $('#reject_request_btn').click(function(){
     let review_notes = $('#review_notes').val();
     $.ajax({
         type: 'POST',
-        url: '../php/reject_request.php',
+        url: './php/reject_request.php',
         data: {
             id: current_id,
             notes: review_notes,

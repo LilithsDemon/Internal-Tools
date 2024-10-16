@@ -1,17 +1,24 @@
 <?php
 
+include_once('./include/_connect.php');
+include_once('./include/_execute.php');
+include_once('./include/_bdie.php');
+include_once('./send_message.php');
+
 if(isset($_POST['id']) && isset($_POST['notes']))
 {
-    include_once('./include/_connect.php');
-    include_once('./include/_execute.php');
-    include_once('./include/_bdie.php');
 
     $SQL = "SELECT * FROM `Change_Request` WHERE `Request_ID` = ?";
     $result = executeCommand($SQL, 'i', $_POST['id']);
     if($result->num_rows == 1)
     {
+        $data_for_change_request = $result->fetch_assoc();
         $SQL = "UPDATE `Change_Request` SET `Reviewed` = 1, `Approved` = 0, `ApprovalNotes` = ?, `ApprovedBy` = ? WHERE `Request_ID` = ?";
         $result = executeCommand($SQL, 'sii', [$_POST['notes'], $_SESSION['id'], $_POST['id']]);
+        if(!sendMessageTo($data_for_change_request['Request_By'], "Your change request has been denied. Please check the request for more information"))
+        {
+            DieWithStatus("Request Denied successfully but failed to send message to user", 500);
+        }
         DieWithStatus("Request Denied Successfully", 200);
     }
     else
