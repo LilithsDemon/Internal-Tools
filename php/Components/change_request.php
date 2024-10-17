@@ -2,9 +2,12 @@
 if(!isset($_SESSION)) {
     session_start();
 }
+
+include_once('../get_change_request.php')
+
 ?>
 
-<div class="change_request d-flex flex-column w-75">
+<div class="change_request">
     <button type="button" class="btn button" id="add_button" data-bs-toggle="modal" data-bs-target="#change_request_modal">
         Create New Change Request
     </button>
