@@ -53,18 +53,18 @@ function loadPage(page)
     $('main').load('./php/Components/' + page + '.php');
 }
 
-$('#add_button').click(function(){
+$('main').on('click', '#add_button', function () {
     let today = new Date().toISOString().substr(0, 10);
     $('#prefilled_date').attr('value', today);
 });
 
-function change_request(id)
-{
-    $('#change_request_review_modal').load('./php/Components/change_request.php?id=' + id);
+$('main').on('click', '#change_request_review_btn', function () {
+    id = $(this).attr('data-id');
+    $('#change_request_review_modal_inner').load('../php/modal_change_request.php?id=' + id);
     current_id = id;
-}
+});
 
-$('#approve_request_btn').click(function(){
+$('main').on('click', '#approve_request_btn', function () {
     let review_notes = $('#review_notes').val();
     $.ajax({
         type: 'POST',
@@ -73,7 +73,7 @@ $('#approve_request_btn').click(function(){
             id: current_id,
             notes: review_notes,
         },
-        success: function(response){
+        success: function(data){
             Swal.fire({
                 title: "Request Approved",
                 text: data.responseText,
@@ -82,7 +82,7 @@ $('#approve_request_btn').click(function(){
                 color: "white",
             });
         },
-        error: function(response){
+        error: function(data){
             Swal.fire({
                 title: "Error Approving Request",
                 text: data.responseText,
@@ -94,7 +94,7 @@ $('#approve_request_btn').click(function(){
     });
 });
 
-$('#reject_request_btn').click(function(){
+$('main').on('click', '#reject_request_btn', function () {
     let review_notes = $('#review_notes').val();
     $.ajax({
         type: 'POST',
@@ -103,7 +103,7 @@ $('#reject_request_btn').click(function(){
             id: current_id,
             notes: review_notes,
         },
-        success: function(response){
+        success: function(data){
             Swal.fire({
                 title: "Request Denied Successfully",
                 text: data.responseText,
@@ -112,7 +112,7 @@ $('#reject_request_btn').click(function(){
                 color: "white",
             });
         },
-        error: function(response){
+        error: function(data){
             Swal.fire({
                 title: "Error Denying Request",
                 text: data.responseText,

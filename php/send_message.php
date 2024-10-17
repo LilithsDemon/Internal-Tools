@@ -58,7 +58,7 @@ function sendMessageTo($user_id, $message)
 {
     $SQL = "INSERT INTO `Messages`(`MessageID`, `UserID`, `Message`, `Date`) VALUES (null,?,?,?)";
 
-    $result = executeCommand($SQL, 'iss', array($user_id, $message, date("Y-m-d")));
+    $result = executeCommandNoResult($SQL, 'iss', array($user_id, $message, date("Y-m-d")));
 
     if($result)
     {

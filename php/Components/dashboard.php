@@ -3,7 +3,7 @@ if(!isset($_SESSION)) {
     session_start();
 }
 ?>
-<div class = "dashboard">
+<div class = "dashboard d-flex flex-column overflow-scroll w-75">
     <div class = "messages">
         <div class="card">
             <div class="card-header">

@@ -7,9 +7,15 @@ $SQL = "SELECT `Request_ID`, `Request_Name`, `Request_Description`, `Request_Dat
 
 $result = executeCommandNoParams($SQL);
 
+?>
+
+<div class="d-flex flex-column overflow-scroll w-75">
+
+<?php
+
 if ($result) {
     ?>
-        <div class="d-flex w-100 text-center justify-content-center flex-wrap gap-4 mt-2">
+        <div class="d-flex flex-column w-100 text-center justify-content-center gap-4 mt-2">
     <?php
     if($result->num_rows == 0)
     {
@@ -19,12 +25,13 @@ if ($result) {
     }
     while ($row = $result->fetch_assoc()) {
         // This needs finishing to work fully
+        $data_id = $row['Request_ID'];
         if ($_SESSION['stakeholder'] == 1) {
-            echo "<button class='card text-center h-25 gap-2 request_card d-flex flex-column' data-bs-toggle='change_request_review_modal' onclick='change_request(" . $row['Request_ID'] . ")'>";
-        ?>
+            echo "<button id='change_request_review_btn' data-id='$data_id' class='card text-center h-25 gap-2 request_card d-flex flex-column' data-bs-toggle='modal' data-bs-target='#change_request_review_modal'>";
+            ?>
         <?php
         } else {
-            echo "<button class='card text-center h-25 gap-2 request_card d-flex flex-column' data-bs-toggle='change_request_review_modal' onclick='change_request(" . $row['Request_ID'] . ")'>";
+            echo "<button id='change_request_review_btn' data-id='$data_id' class='card text-center h-25 gap-2 request_card d-flex flex-column' data-bs-toggle='modal' data-bs-target='#change_request_review_modal'>";
         }
         ?>
         <div class="card-header">
@@ -36,15 +43,15 @@ if ($result) {
         <?php
         if ($row['Reviewed'] == 0) {
             ?>
-                <div class="w-25 align-self-center btn btn-warning">Not Reviewed</div>
+                <div class="ms-2 me-2 align-self-center btn btn-warning">Not Reviewed</div>
             <?php
         } else if ($row['Approved'] == 1) {
             ?>
-                <div class="w-25 align-self-center btn btn-success">Approved</div>
+                <div class="ms-2 me-2 align-self-center btn btn-success">Approved</div>
             <?php
         } else {
             ?>
-                <div class="w-25 align-self-center btn btn-danger">Rejected</div>
+                <div class="ms-2 me-2 align-self-center btn btn-danger">Rejected</div>
             <?php
         }
         ?>
@@ -59,9 +66,11 @@ if ($result) {
     ?>
     </div>
 
-    <div class="modal fade" id="change_request_review_modal" data-bs-backdrop="static"
-        aria-labelledby="Modal form for creating a new change request" aria-hidden="true">
+</div>
+<div class="modal fade" data-bs-backdrop="static" id="change_request_review_modal" aria-labelledby="Modal form for creating a new change request" aria-hidden="true">
+        <div id="change_request_review_modal_inner" class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
 
+        </div>
     </div>
     <?php
 }
