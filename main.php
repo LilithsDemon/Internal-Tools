@@ -48,8 +48,7 @@ if ($_SESSION['auth'] == false) {
         <?php
         include("./php/Components/dashboard.php");
         ?>
-    </main>
-
+    
     <?php
     if ($_SESSION['admin'] == 1) {
         ?>
@@ -82,7 +81,7 @@ if ($_SESSION['auth'] == false) {
                     <div class="modal-body d-flex justify-content-center align-items-center">
                         <form class="d-flex flex-column gap-4">
                             <div class="d-flex gap-2">
-                                <input type="text" class="form-control" id="user_name" name="user_title"
+                                <input type="text" class="form-control" id="user_title" name="user_title"
                                     placeholder="Username..." required>
                             </div>
                             <div class="d-flex gap-2">
@@ -109,7 +108,7 @@ if ($_SESSION['auth'] == false) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                        <button type="button" class="btn btn-primary">Create User</button>
+                        <button type="button" id="create_user_btn" data-bs-dismiss="modal" class="btn btn-primary">Create User</button>
                     </div>
                 </div>
             </div>
@@ -117,6 +116,10 @@ if ($_SESSION['auth'] == false) {
         <?php
     }
     ?>
+
+    </main>
+
+    
 
 </body>
 <script src="js/main.js"></script>

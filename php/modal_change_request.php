@@ -155,8 +155,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" id="reject_request_btn" class="btn btn-danger">Reject Request</button>
-                                <button type="button" id="approve_request_btn" class="btn button">Approve Request</button>
+                                <button type="button" id="reject_request_btn" data-bs-dismiss="modal" class="btn btn-danger">Reject Request</button>
+                                <button type="button" id="approve_request_btn" data-bs-dismiss="modal" class="btn button">Approve Request</button>
                             </div>
                         </div>
                 <?php

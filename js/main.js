@@ -64,6 +64,38 @@ $('main').on('click', '#change_request_review_btn', function () {
     current_id = id;
 });
 
+$('main').on('click', '#create_user_btn', function () {
+    $.ajax({
+        type: 'POST',
+        url: './php/create_users.php',
+        data: {
+            user_name: $('#user_title').val(),
+            user_first_name: $('#user_first_name').val(),
+            user_last_name: $('#user_last_name').val(),
+            stakeholder: $('#stakeholder').val(),
+            admin: $('#admin').val(),
+        },
+        success: function(data){
+            Swal.fire({
+                title: "User Created Successfully",
+                text: data.responseText,
+                icon: "success",
+                heightAuto: false,
+                color: "white",
+            });
+        },
+        error: function(data){
+            Swal.fire({
+                title: "Error Creating User",
+                text: data.responseText,
+                icon: "error",
+                heightAuto: false,
+                color: "white",
+            });
+        }
+    });
+});
+
 $('main').on('click', '#approve_request_btn', function () {
     let review_notes = $('#review_notes').val();
     $.ajax({
