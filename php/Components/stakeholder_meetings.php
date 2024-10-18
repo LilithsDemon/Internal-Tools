@@ -2,9 +2,12 @@
 if(!isset($_SESSION)) {
     session_start();
 }
+
+include_once('../get_stakeholder_meetings.php');
+
 ?>
 
-<div class="change_request d-flex flex-column w-75">
+<div class="change_request">
     <?php
     if ($_SESSION['admin'] == 1) {
         ?>

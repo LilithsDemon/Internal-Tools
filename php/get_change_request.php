@@ -26,13 +26,7 @@ if ($result) {
     while ($row = $result->fetch_assoc()) {
         // This needs finishing to work fully
         $data_id = $row['Request_ID'];
-        if ($_SESSION['stakeholder'] == 1) {
-            echo "<button id='change_request_review_btn' data-id='$data_id' class='card text-center h-25 gap-2 request_card d-flex flex-column' data-bs-toggle='modal' data-bs-target='#change_request_review_modal'>";
-            ?>
-        <?php
-        } else {
-            echo "<button id='change_request_review_btn' data-id='$data_id' class='card text-center h-25 gap-2 request_card d-flex flex-column' data-bs-toggle='modal' data-bs-target='#change_request_review_modal'>";
-        }
+        echo "<button id='change_request_review_btn' data-id='$data_id' class='card text-center h-25 gap-2 request_card d-flex flex-column' data-bs-toggle='modal' data-bs-target='#change_request_review_modal'>";
         ?>
         <div class="card-header">
             <?php echo $row['Request_Name'] ?>

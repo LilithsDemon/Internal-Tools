@@ -3,7 +3,7 @@ if(!isset($_SESSION)) {
     session_start();
 }
 
-include_once('../get_change_request.php')
+include_once('../get_change_request.php');
 
 ?>
 
