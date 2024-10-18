@@ -22,7 +22,6 @@ $('#scrum_meetings').click(function(){
 
 
 $('main').on('click', '#send_request', function () {
-    console.log($("#change_request_form").serialize())
     $.ajax({
         type: "POST",
         url: "./php/send_change_request.php",
@@ -35,10 +34,63 @@ $('main').on('click', '#send_request', function () {
                 heightAuto: false,
                 color: "white",
             });
+            $('main').load('./php/Components/change_request.php');
         },
         error: function(data){
             Swal.fire({
                 title: "Error Sending Request",
+                text: data.responseText,
+                icon: "error",
+                heightAuto: false,
+                color: "white",
+            });
+        },
+    });
+});
+
+$('main').on('click', '#save_scrum_btn', function () {
+    $.ajax({
+        type: "POST",
+        url: "./php/send_scrum_meeting.php",
+        data: $("#scrum_form").serialize(),
+        success: function(data) {
+            Swal.fire({
+                title: "Scrum meeting saved Successfully",
+                text: data.responseText,
+                icon: "success",
+                heightAuto: false,
+                color: "white",
+            });
+        },
+        error: function(data){
+            Swal.fire({
+                title: "Error Saving Meeting",
+                text: data.responseText,
+                icon: "error",
+                heightAuto: false,
+                color: "white",
+            });
+        },
+    });
+});
+
+$('main').on('click', '#save_sh_btn', function () {
+    $.ajax({
+        type: "POST",
+        url: "./php/send_stakeholder_meeting.php",
+        data: $("#sh_form").serialize(),
+        success: function(data) {
+            Swal.fire({
+                title: "Stakeholder meeting saved successfully",
+                text: data.responseText,
+                icon: "success",
+                heightAuto: false,
+                color: "white",
+            });
+        },
+        error: function(data){
+            Swal.fire({
+                title: "Error Saving Meeting",
                 text: data.responseText,
                 icon: "error",
                 heightAuto: false,
@@ -113,6 +165,7 @@ $('main').on('click', '#approve_request_btn', function () {
                 heightAuto: false,
                 color: "white",
             });
+            $('main').load('./php/Components/change_request.php');
         },
         error: function(data){
             Swal.fire({
@@ -143,6 +196,7 @@ $('main').on('click', '#reject_request_btn', function () {
                 heightAuto: false,
                 color: "white",
             });
+            $('main').load('./php/Components/change_request.php');
         },
         error: function(data){
             Swal.fire({

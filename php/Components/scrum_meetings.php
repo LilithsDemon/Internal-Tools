@@ -40,7 +40,7 @@ if ($_SESSION['admin'] == 1) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="d-flex flex-column gap-4">
+                    <form id="scrum_form" class="d-flex flex-column gap-4">
                         <div class="d-flex gap-2">
                             <input type="text" class="form-control" id="scrum_title" name="scrum_title"
                                 placeholder="Scrum Title..." required>
@@ -54,7 +54,7 @@ if ($_SESSION['admin'] == 1) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                    <button type="button" class="btn btn-primary">Save Meeting</button>
+                    <button type="button" id="save_scrum_btn" class="btn btn-primary" data-bs-dismiss="modal">Save Meeting</button>
                 </div>
             </div>
         </div>
