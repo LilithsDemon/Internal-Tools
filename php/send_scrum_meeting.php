@@ -26,7 +26,7 @@ if(isset($_SESSION['userID'], $_POST['users'], $_POST['meeting_title'], $_POST['
 
         for($i = 0; $i < count($users); $i++)
         {
-            $SQL = "INSERT INTO `Stakeholder_Atendees`(`AtendeeID`, `StakeholderID`, `UserID`) VALUES (NULL, ?,?)";
+            $SQL = "INSERT INTO `Scrum_Atendees`(`AtendeeID`, `ScrumID`, `UserID`) VALUES (NULL, ?,?)";
             $result = executeCommandNoResult($SQL, 'ii', [$meetingID, $users[$i]]);
             if(!$result)
             {

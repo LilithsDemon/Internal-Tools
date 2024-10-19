@@ -55,7 +55,7 @@ $('main').on('click', '#save_scrum_btn', function () {
     });
     $.ajax({
         type: "POST",
-        url: "./php/send_scrum_meeting,php",
+        url: "./php/send_scrum_meeting.php",
         data: { users: JSON.stringify(selected_ids),
             meeting_title: $('#meeting_title').val(),
             meeting_notes: $('#meeting_notes').val(),
