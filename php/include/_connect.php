@@ -7,5 +7,4 @@ $server = "plesk.remote.ac";
 
 $connect = mysqli_connect($server, $username, $password, $db_name);
 
-
 if (mysqli_connect_errno()) echo("Connect failed: %s\n" . mysqli_connect_error());

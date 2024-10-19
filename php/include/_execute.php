@@ -24,6 +24,27 @@ function executeCommand($sql, $param_type, $params)
     return mysqli_stmt_get_result($stmt); // Returns the result of the statement
 }
 
+function executeCommandID($sql, $param_type, $params)
+{
+    require("_connect.php"); // This allows us to connect to the database
+
+    //Allows any inputs to be sanitised so that there is lower risk of SQL injection or any other type of attack
+    for($i = 0; $i < sizeof($params); $i++)
+    {
+        $params[$i] = mysqli_real_escape_string($connect, $params[$i]);
+        $params[$i] = htmlspecialchars($params[$i], ENT_QUOTES);
+    }
+
+    $stmt = mysqli_prepare($connect, $sql);
+    if ($stmt === false) return false;
+
+    if ($params !== null) mysqli_stmt_bind_param($stmt, $param_type, ...$params);
+    else return false; // If there are no parameters code will not be executed properly
+
+    mysqli_stmt_execute($stmt); // Executes the statement
+    return mysqli_stmt_insert_id($stmt); // Returns the result of the statement
+}
+
 function executeCommandNoResult($sql, $param_type, $params)
 {
     require("_connect.php"); // This allows us to connect to the database

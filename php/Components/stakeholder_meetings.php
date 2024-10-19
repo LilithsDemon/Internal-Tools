@@ -11,7 +11,7 @@ include_once('../get_stakeholder_meetings.php');
     <?php
     if ($_SESSION['admin'] == 1) {
         ?>
-        <button type="button" class="btn button" id="add_button" onclick="loadDate()" data-bs-toggle="modal" data-bs-target="#stakeholder_meeting_modal">
+        <button type="button" class="btn button" id="add_button" data-bs-toggle="modal" data-bs-target="#stakeholder_meeting_modal">
             Create New StakeHolder Meeting
         </button>
     <?php
@@ -36,6 +36,24 @@ if ($_SESSION['admin'] == 1) {
                             <input type="text" class="form-control" id="meeting_title" name="meeting_title"
                                 placeholder="Meeting Title..." required>
                             <input type="date" class="form-control" id="prefilled_date" name="meeting_date" disabled>
+                        </div>
+                        <div class="d-flex flex-row flex-overflow-wrap gap-4 members">
+                            <?php
+                                $SQL = "SELECT `UserID`, `FirstName`, `LastName` FROM `Users` WHERE `Stakeholder` = 0";
+                                $result = executeCommandNoParams($SQL);
+                                if ($result) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <div class="d-flex gap-2">
+                                            <?php
+                                                  echo "<input class='form-check-input' name='type' data-id='" . $row['UserID'] . "' type='checkbox' value=''>";
+                                                  echo '<label class="form-check-label">' . $row['FirstName'] . ' ' . $row['LastName'] . '</label>';
+                                            ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                            ?>
                         </div>
                         <div class="d-flex">
                             <textarea rows="12" class="form-control" id="meeting_notes" name="meeting_notes"

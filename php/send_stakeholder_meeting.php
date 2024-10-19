@@ -7,21 +7,36 @@ if(!isset($_SESSION))
 
 require_once('./include/_bdie.php');
 
-if(isset($_SESSION['userID'], $_POST['meeting_title']) && isset($_POST['meeting_notes']))
+if(isset($_SESSION['userID'], $_POST['users'], $_POST['meeting_title'], $_POST['meeting_notes']))
 {
-
     require_once('./include/_connect.php');
     include_once('./include/_execute.php');
     include_once('send_message.php');
 
     $SQL = "INSERT INTO `Stakeholder_Meeting`(`MeetingID`, `MeetingTitle`, `MeetingDate`, `MeetingNotes`) VALUES (null,?,?,?)";
 
-    $result = executeCommand($SQL, 'sss', [$_POST['meeting_title'], date('Y-m-d'), $_POST['meeting_notes']]);
+    $result = executeCommandID($SQL, 'sss', [$_POST['meeting_title'], date('Y-m-d'), $_POST['meeting_notes']]);
 
-    //Update with attendees soon
+    $meetingID = (string)$result;
 
     if($result)
     {
+        $fail = false;
+        $users = json_decode($_POST['users']);
+
+        for($i = 0; $i < count($users); $i++)
+        {
+            $SQL = "INSERT INTO `Stakeholder_Atendees`(`AtendeeID`, `StakeholderID`, `UserID`) VALUES (NULL, ?,?)";
+            $result = executeCommandNoResult($SQL, 'ii', [$meetingID, $users[$i]]);
+            if(!$result)
+            {
+                $fail = true;
+                break;
+            }
+        }
+
+        if($fail) DieWithStatus("Failed to add users to meeting", 500);
+
         if(!sendMessageToEveryone("A new stakeholder meeting has been added. Please feel free to review it."))
         {
             DieWithStatus("Completed but failed to send message", 500);

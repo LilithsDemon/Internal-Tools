@@ -14,7 +14,7 @@ if($_SESSION['stakeholder'] == 1) {
 
 <?php
 } else {
-    include_once('../get_stakeholder_meetings.php');
+    include_once('../get_scrum_meetings.php');
 }
 ?>
 
@@ -44,12 +44,30 @@ if ($_SESSION['admin'] == 1) {
                 <div class="modal-body">
                     <form id="scrum_form" class="d-flex flex-column gap-4">
                         <div class="d-flex gap-2">
-                            <input type="text" class="form-control" id="scrum_title" name="scrum_title"
+                            <input type="text" class="form-control" id="meeting_title" name="meeting_title"
                                 placeholder="Scrum Title..." required>
-                            <input type="date" class="form-control" id="prefilled_date" name="scrum_date" disabled>
+                            <input type="date" class="form-control" id="prefilled_date" name="meeting_date" disabled>
+                        </div>
+                        <div class="d-flex flex-row flex-overflow-wrap gap-4 members">
+                            <?php   
+                                $SQL = "SELECT `UserID`, `FirstName`, `LastName` FROM `Users` WHERE `Stakeholder` = 0";
+                                $result = executeCommandNoParams($SQL);
+                                if ($result) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <div class="d-flex gap-2">
+                                            <?php
+                                                  echo "<input class='form-check-input' data-id='" . $row['UserID'] . "' type='checkbox' value=''>";
+                                                  echo '<label class="form-check-label">' . $row['FirstName'] . ' ' . $row['LastName'] . '</label>';
+                                            ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                            ?>
                         </div>
                         <div class="d-flex">
-                            <textarea rows="12" class="form-control" id="scrum_notes" name="scrum_notes"
+                            <textarea rows="12" class="form-control" id="meeting_notes" name="meeting_notes"
                                 placeholder="Scrum Notes..." required></textarea>
                         </div>
                     </form>

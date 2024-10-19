@@ -49,10 +49,17 @@ $('main').on('click', '#send_request', function () {
 });
 
 $('main').on('click', '#save_scrum_btn', function () {
+    var selected_ids = [];
+    $("input:checkbox:checked").each(function() { 
+        selected_ids.push($(this).attr('data-id')); 
+    });
     $.ajax({
         type: "POST",
-        url: "./php/send_scrum_meeting.php",
-        data: $("#scrum_form").serialize(),
+        url: "./php/send_scrum_meeting,php",
+        data: { users: JSON.stringify(selected_ids),
+            meeting_title: $('#meeting_title').val(),
+            meeting_notes: $('#meeting_notes').val(),
+        },
         success: function(data) {
             Swal.fire({
                 title: "Scrum meeting saved Successfully",
@@ -61,6 +68,7 @@ $('main').on('click', '#save_scrum_btn', function () {
                 heightAuto: false,
                 color: "white",
             });
+            $('main').load('./php/Components/scrum_meetings.php');
         },
         error: function(data){
             Swal.fire({
@@ -75,10 +83,17 @@ $('main').on('click', '#save_scrum_btn', function () {
 });
 
 $('main').on('click', '#save_sh_btn', function () {
+    var selected_ids = [];
+    $("input:checkbox:checked").each(function() { 
+        selected_ids.push($(this).attr('data-id')); 
+    });
     $.ajax({
         type: "POST",
         url: "./php/send_stakeholder_meeting.php",
-        data: $("#sh_form").serialize(),
+        data: { users: JSON.stringify(selected_ids),
+            meeting_title: $('#meeting_title').val(),
+            meeting_notes: $('#meeting_notes').val(),
+        },
         success: function(data) {
             Swal.fire({
                 title: "Stakeholder meeting saved successfully",
@@ -87,6 +102,7 @@ $('main').on('click', '#save_sh_btn', function () {
                 heightAuto: false,
                 color: "white",
             });
+            $('main').load('./php/Components/stakeholder_meetings.php');
         },
         error: function(data){
             Swal.fire({
