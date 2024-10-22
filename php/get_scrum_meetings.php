@@ -20,7 +20,7 @@ if ($result) {
     if($result->num_rows == 0)
     {
         ?>
-        <h1>Sorry, no change requests have been sent yet!</h1>
+        <h1>Sorry, no meetings have been sat yet!</h1>
         <?php
     }
     while ($row = $result->fetch_assoc()) {

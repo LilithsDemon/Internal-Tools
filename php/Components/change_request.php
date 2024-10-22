@@ -5,6 +5,8 @@ if(!isset($_SESSION)) {
 
 include_once('../get_change_request.php');
 
+if($_SESSION['stakeholder'] == 1)
+{
 ?>
 
 <div class="change_request">
@@ -12,6 +14,10 @@ include_once('../get_change_request.php');
         Create New Change Request
     </button>
 </div>
+
+<?php
+}
+?>
 
 <div class="modal fade" id="change_request_modal" data-bs-backdrop="static" aria-labelledby="Modal form for creating a new change request" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
