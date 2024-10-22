@@ -2,6 +2,9 @@
 if(!isset($_SESSION)) {
     session_start();
 }
+require_once('./php/include/_connect.php');
+include_once('./php/include/_execute.php');
+require_once('./php/include/_bdie.php');
 ?>
 <div class = "dashboard d-flex flex-column overflow-scroll w-75">
     <div class = "messages">
@@ -11,9 +14,17 @@ if(!isset($_SESSION)) {
             </div>
             <div class="card-body d-flex flex-column m-0 p-0">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Change Request "Add additional menu to group" has been approved go to change requests to see notes</li>
-                    <li class="list-group-item">A second message</li>
-                    <li class="list-group-item">A third message</li>
+                    <?php 
+                    $SQL = "SELECT `Message`, `Date` FROM `Messages` WHERE `UserID` = ? LIMIT 3";
+                    $result = executeCommand($SQL, "i", [$_SESSION['userID']]);
+                    if($result)
+                    {
+                        while($row = $result->fetch_assoc())
+                        {
+                            echo "<li class='list-group-item'>" . $row['Message'] . "</li>";
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
