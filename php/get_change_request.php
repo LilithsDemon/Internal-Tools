@@ -26,7 +26,7 @@ if ($result) {
     while ($row = $result->fetch_assoc()) {
         // This needs finishing to work fully
         $data_id = $row['Request_ID'];
-        echo "<button id='change_request_review_btn' data-id='$data_id' class='card text-center h-25 gap-2 request_card d-flex flex-column' data-bs-toggle='modal' data-bs-target='#change_request_review_modal'>";
+        echo "<div id='change_request_review_btn' data-id='$data_id' class='card text-center h-25 gap-2' data-bs-toggle='modal' data-bs-target='#change_request_review_modal'>";
         ?>
         <div class="card-header">
             <?php echo $row['Request_Name'] ?>
@@ -52,7 +52,7 @@ if ($result) {
         <div class="card-footer text-body-secondary">
             <?php echo $row['Request_Date'] ?>
         </div>
-        </button>
+    </div>
         <?php
 
     }

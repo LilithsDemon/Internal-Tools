@@ -132,6 +132,18 @@ $('main').on('click', '#change_request_review_btn', function () {
     current_id = id;
 });
 
+$('main').on('click', '#scrum_meeting_view_btn', function () {
+    id = $(this).attr('data-id');
+    $('#scrum_meeting_view_modal_inner').load('../php/modal_scrum_meeting.php?id=' + id);
+    current_id = id;
+});
+
+$('main').on('click', '#sh_meeting_view_btn', function () {
+    id = $(this).attr('data-id');
+    $('#sh_meeting_view_modal_inner').load('../php/modal_stakeholder_meeting.php?id=' + id);
+    current_id = id;
+});
+
 $('main').on('click', '#create_user_btn', function () {
     $.ajax({
         type: 'POST',

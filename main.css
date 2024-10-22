@@ -14,6 +14,17 @@
 ::after {
     box-sizing: border-box;
 }
+
+*::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+* {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
 body {
     position: relative;
     margin: var(--header-height) 0 0 0;
