@@ -132,10 +132,22 @@ $('main').on('click', '#change_request_review_btn', function () {
     current_id = id;
 });
 
+$('main').on('click', '#close_change_request_view', function () {
+    $('#change_request_review_modal_inner').empty();
+});
+
 $('main').on('click', '#scrum_meeting_view_btn', function () {
     id = $(this).attr('data-id');
     $('#scrum_meeting_view_modal_inner').load('../php/modal_scrum_meeting.php?id=' + id);
     current_id = id;
+});
+
+$('main').on('click', '#close_scrum_meeting_view', function () {
+    $('#scrum_meeting_view_modal_inner').empty();
+});
+
+$('main').on('click', '#close_sh_meeting_view', function () {
+    $('#sh_meeting_view_modal_inner').empty();
 });
 
 $('main').on('click', '#sh_meeting_view_btn', function () {
@@ -144,7 +156,7 @@ $('main').on('click', '#sh_meeting_view_btn', function () {
     current_id = id;
 });
 
-$('main').on('click', '#create_user_btn', function () {
+$('#create_user_modal').on('click', '#create_user_btn', function () {
     $.ajax({
         type: 'POST',
         url: './php/create_users.php',
@@ -155,6 +167,32 @@ $('main').on('click', '#create_user_btn', function () {
             stakeholder: $('#stakeholder').val(),
             admin: $('#admin').val(),
         },
+        success: function(data){
+            Swal.fire({
+                title: "User Created Successfully",
+                text: data.responseText,
+                icon: "success",
+                heightAuto: false,
+                color: "white",
+            });
+        },
+        error: function(data){
+            Swal.fire({
+                title: "Error Creating User",
+                text: data.responseText,
+                icon: "error",
+                heightAuto: false,
+                color: "white",
+            });
+        }
+    });
+});
+
+$('#change_password_modal').on('click', '#change_password_btn', function () {
+    $.ajax({
+        type: 'POST',
+        url: './php/change_password.php',
+        data: $("#change_password_form").serialize(),
         success: function(data){
             Swal.fire({
                 title: "User Created Successfully",
@@ -194,6 +232,7 @@ $('main').on('click', '#approve_request_btn', function () {
                 color: "white",
             });
             $('main').load('./php/Components/change_request.php');
+            $('#change_request_review_modal_inner').empty();
         },
         error: function(data){
             Swal.fire({
@@ -225,6 +264,7 @@ $('main').on('click', '#reject_request_btn', function () {
                 color: "white",
             });
             $('main').load('./php/Components/change_request.php');
+            $('#change_request_review_modal_inner').empty();
         },
         error: function(data){
             Swal.fire({

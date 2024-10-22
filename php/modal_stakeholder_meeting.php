@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" id="close_sh_meeting_view" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
                 <?php

@@ -18,7 +18,7 @@ if(!isset($_SESSION)) {
             </div>
         </div>
     </div>
-    <div class = "tasks">
+    <div class = "tasks d-flex">
         <?php if($_SESSION['admin'] == 1) { ?>
             <div class="card scrum_meetings">
                 <div class="card-header">

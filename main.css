@@ -151,6 +151,14 @@ a {
     }
 }
 
+@media screen and (max-width: 1024px)
+{
+    .tasks
+    {
+        flex-direction: column;
+    }
+}
+
 :root {
     --primary_gradient_35: linear-gradient(
         35deg,
@@ -173,18 +181,11 @@ main {
 
 .dashboard
 {
-    width: 90%;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     gap: 50px;
 }
 
 .tasks
 {
-    display: flex;
     gap:20px;
 }
 
