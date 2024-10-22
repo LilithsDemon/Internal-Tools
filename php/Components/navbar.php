@@ -33,14 +33,10 @@
                     <i class='bx bx-message-square-detail nav_icon'></i>
                     <span class="nav_name">Messages</span>
                 </a>
-                <?php
-                    if($_SESSION['admin'] == 1 && $_SESSION['stakeholder'] == 0) {
-                ?>
                 <a href="#" class="nav_link" data-bs-toggle="modal" data-bs-target="#settings_modal">
                     <i class='bx bx-cog nav_icon'></i>
                     <span class="nav_name">Settings</span>
                 </a>
-                <?php } ?>
             </div>
         </div> 
         <a href="./php/logout.php" class="nav_link">

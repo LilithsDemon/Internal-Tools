@@ -51,9 +51,6 @@ if ($_SESSION['auth'] == false) {
 
     </main>
 
-    <?php
-    if ($_SESSION['admin'] == 1) {
-        ?>
         <div class="modal fade" id="settings_modal" aria-labelledby="Modal form for changing settings" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
@@ -62,7 +59,13 @@ if ($_SESSION['auth'] == false) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body d-flex flex-column gap-2 justify-content-center align-items-center">
+                    <?php
+                    if ($_SESSION['admin'] == 1) {
+                        ?>
                         <button class="btn button" data-bs-target="#create_user_modal" data-bs-toggle="modal">Create new user</button>
+                        <?php
+                    }
+                    ?>
                         <button class="btn button" data-bs-target="#change_password_modal" data-bs-toggle="modal">Change Password</button>
                     </div>
                     <div class="modal-footer">
@@ -72,6 +75,9 @@ if ($_SESSION['auth'] == false) {
             </div>
         </div>
 
+        <?php
+        if ($_SESSION['admin'] == 1) {
+        ?>
         <div class="modal fade" id="create_user_modal" aria-labelledby="Modal form for changing settings"
             aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
@@ -115,6 +121,9 @@ if ($_SESSION['auth'] == false) {
                 </div>
             </div>
         </div>
+        <?php
+        }
+        ?>
 
         <div class="modal fade" id="change_password_modal" aria-labelledby="Modal form for changing settings"
             aria-hidden="true">
@@ -137,10 +146,6 @@ if ($_SESSION['auth'] == false) {
                 </div>
             </div>
         </div>
-        
-        <?php
-    }
-    ?>
 
 </body>
 <script src="js/main.js"></script>
