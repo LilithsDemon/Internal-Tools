@@ -9,7 +9,7 @@ include_once('../get_stakeholder_meetings.php');
 
 <div class="change_request">
     <?php
-    if ($_SESSION['admin'] == 1) {
+    if ($_SESSION['admin'] == 1 && $_SESSION['stakeholder'] == 0) {
         ?>
         <button type="button" class="btn button" id="add_button" data-bs-toggle="modal" data-bs-target="#stakeholder_meeting_modal">
             Create New StakeHolder Meeting
