@@ -45,7 +45,7 @@ else if ($_COOKIE['auth'] == true) header("Location");
           <div class="mb-5">
             <div class="text-center mb-4">
               <a href="#!">
-                <img src="./assets/logo.png" alt="LilithsDemon Logo" width="128" height="128">
+                <img src="./assets/logo.png" alt="Logo" width="128" height="128">
               </a>
             </div>
             <h4 class="text-center mb-2">Welcome back!</h4>

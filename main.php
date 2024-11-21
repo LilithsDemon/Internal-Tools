@@ -51,33 +51,33 @@ if ($_SESSION['auth'] == false) {
 
     </main>
 
-        <div class="modal fade" id="settings_modal" aria-labelledby="Modal form for changing settings" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Settings</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex flex-column gap-2 justify-content-center align-items-center">
+    <div class="modal fade" id="settings_modal" aria-labelledby="Modal form for changing settings" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Settings</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex flex-column gap-2 justify-content-center align-items-center">
                     <?php
                     if ($_SESSION['admin'] == 1) {
-                        ?>
+                    ?>
                         <button class="btn button" data-bs-target="#create_user_modal" data-bs-toggle="modal">Create new user</button>
-                        <?php
+                    <?php
                     }
                     ?>
-                        <button class="btn button" data-bs-target="#change_password_modal" data-bs-toggle="modal">Change Password</button>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
+                    <button class="btn button" data-bs-target="#change_password_modal" data-bs-toggle="modal">Change Password</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <?php
-        if ($_SESSION['admin'] == 1) {
-        ?>
+    <?php
+    if ($_SESSION['admin'] == 1) {
+    ?>
         <div class="modal fade" id="create_user_modal" aria-labelledby="Modal form for changing settings"
             aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
@@ -121,31 +121,31 @@ if ($_SESSION['auth'] == false) {
                 </div>
             </div>
         </div>
-        <?php
-        }
-        ?>
+    <?php
+    }
+    ?>
 
-        <div class="modal fade" id="change_password_modal" aria-labelledby="Modal form for changing settings"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex justify-content-center align-items-center">
-                        <form id="change_password_form" class="d-flex flex-column gap-4">
-                            <input type="password" class="form-control" name="new_password" placeholder="New Password..." required>
-                            <input type="password" class="form-control" name="password_confirm" placeholder="Confirm New Password..." required>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                        <button type="button" id="create_user_btn" data-bs-dismiss="modal" class="btn btn-primary">Create User</button>
-                    </div>
+    <div class="modal fade" id="change_password_modal" aria-labelledby="Modal form for changing settings"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center align-items-center">
+                    <form id="change_password_form" class="d-flex flex-column gap-4">
+                        <input type="password" class="form-control" name="new_password" placeholder="New Password..." required>
+                        <input type="password" class="form-control" name="password_confirm" placeholder="Confirm New Password..." required>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+                    <button type="button" id="change_password_btn" data-bs-dismiss="modal" class="btn btn-primary">Change Password</button>
                 </div>
             </div>
         </div>
+    </div>
 
 </body>
 <script src="js/main.js"></script>

@@ -195,7 +195,7 @@ $('#change_password_modal').on('click', '#change_password_btn', function () {
         data: $("#change_password_form").serialize(),
         success: function(data){
             Swal.fire({
-                title: "User Created Successfully",
+                title: "User's password changed successfully",
                 text: data.responseText,
                 icon: "success",
                 heightAuto: false,
@@ -204,7 +204,7 @@ $('#change_password_modal').on('click', '#change_password_btn', function () {
         },
         error: function(data){
             Swal.fire({
-                title: "Error Creating User",
+                title: "Error updating password",
                 text: data.responseText,
                 icon: "error",
                 heightAuto: false,

@@ -169,6 +169,7 @@ a {
 
 .button {
     background: var(--primary_gradient_35);
+    border: none;
 }
 
 main {
