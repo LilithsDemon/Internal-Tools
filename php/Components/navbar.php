@@ -9,18 +9,17 @@
                 <span class="nav_logo-name">LilithsDevs</span>
             </a>
             <div class="nav_list">
-                <a id="dashboard" href="#" class="nav_link active">
+                <a id="dashboard_page" href="#" class="nav_link">
                     <i class='bx bx-grid-alt nav_icon'> </i>
                     <span class="nav_name">Dashboard</span>
                 </a>
                 <?php
-                    if($_SESSION['stakeholder'] == 0 || $_SESSION['admin'] == 1)
-                    { 
+                if ($_SESSION['stakeholder'] == 0 || $_SESSION['admin'] == 1) {
                 ?>
-                <a id="scrum_meetings" href="#" class="nav_link">
-                    <i class='bx bx-chalkboard nav_icon'> </i>
-                    <span class="nav_name">Scrum Meetings</span>
-                </a>
+                    <a id="scrum_meetings" href="#" class="nav_link">
+                        <i class='bx bx-chalkboard nav_icon'> </i>
+                        <span class="nav_name">Scrum Meetings</span>
+                    </a>
                 <?php } ?>
                 <a id="stakeholder_meetings" href="#" class="nav_link">
                     <i class='bx bx-group nav_icon'> </i>
@@ -30,6 +29,14 @@
                     <i class='bx bx-notepad nav_icon'> </i>
                     <span class="nav_name">Change Requests</span>
                 </a>
+                <?php
+                if ($_SESSION['stakeholder'] == 0 || $_SESSION['admin'] == 1) {
+                ?>
+                    <a id="raid" href="#" class="nav_link">
+                        <i class='bx bx-notepad nav_icon'> </i>
+                        <span class="nav_name">RAID Analysis</span>
+                    </a>
+                <?php } ?>
                 <a id="messages" href="#" class="nav_link">
                     <i class='bx bx-message-square-detail nav_icon'></i>
                     <span class="nav_name">Messages</span>
@@ -39,9 +46,9 @@
                     <span class="nav_name">Settings</span>
                 </a>
             </div>
-        </div> 
+        </div>
         <a href="./php/logout.php" class="nav_link">
-        <i class='bx bx-log-out nav_icon'></i>
-        <span class="nav_name">Sign Out</span> </a>
+            <i class='bx bx-log-out nav_icon'></i>
+            <span class="nav_name">Sign Out</span> </a>
     </nav>
 </div>

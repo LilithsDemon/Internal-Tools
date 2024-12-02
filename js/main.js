@@ -4,7 +4,7 @@ $('#change_request').click(function(){
     $('main').load('./php/Components/change_request.php');
 });
 
-$('#dashboard').click(function(){
+$('#dashboard_page').click(function(){
     $('main').load('./php/Components/dashboard.php');
 });
 
@@ -18,6 +18,10 @@ $('#stakeholder_meetings').click(function(){
 
 $('#scrum_meetings').click(function(){ 
     $('main').load('./php/Components/scrum_meetings.php');
+});
+
+$('#raid').click(function(){ 
+    $('main').load('./php/Components/raid.php');
 });
 
 
