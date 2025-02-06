@@ -32,7 +32,7 @@ if ($result) {
             <?php echo $row['Request_Name'] ?>
         </div>
         <div class="card-body">
-            <p class="card-text"><?php echo $row['Request_Description'] ?></p>
+            <p class="card-text"><?php echo str_replace(["\\n\\n", "\\n"], "<br>", $row['Request_Description']); ?></p>
         </div>
         <?php
         if ($row['Reviewed'] == 0) {
