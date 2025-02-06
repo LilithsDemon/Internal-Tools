@@ -1,22 +1,19 @@
 <?php
-if(!isset($_SESSION)) {
-    session_start();
+if (!isset($_SESSION)) {
+  session_start();
 }
 
 include_once('../get_change_request.php');
 
-if($_SESSION['stakeholder'] == 1)
-{
 ?>
 
 <div class="change_request">
-    <button type="button" class="btn button" id="add_button" data-bs-toggle="modal" data-bs-target="#change_request_modal">
-        Create New Change Request
-    </button>
+  <button type="button" class="btn button" id="add_button" data-bs-toggle="modal" data-bs-target="#change_request_modal">
+    Create New Change Request
+  </button>
 </div>
 
 <?php
-}
 ?>
 
 <div class="modal fade" id="change_request_modal" data-bs-backdrop="static" aria-labelledby="Modal form for creating a new change request" aria-hidden="true">
@@ -28,31 +25,31 @@ if($_SESSION['stakeholder'] == 1)
       </div>
       <div class="modal-body">
         <form id="change_request_form" class="d-flex flex-column gap-4">
-            <div class="d-flex gap-2">
-                <input type="text" class="form-control" id="request_title" name="request_title" placeholder="Request Title..." required>
-                <input type="date" class="form-control" id="prefilled_date" disabled>
-            </div>
-            <div class="d-flex flex-column gap-1">
-                <label for="request_assigner">Request Made By:</label>
-                <?php echo "<input type='text' class='form-control' id='request_assigner' value='" . $_SESSION['firstName'] . " " . $_SESSION['lastName'] . "' disabled>"; ?>
-            </div>
-            <div class="d-flex flex-column gap-1">
-                <label for="request_priority"></label>
-                <select class="form-select" id="request_priority" name="request_priority" required>
-                    <option value="" selected disabled>Select Priority Level</option>
-                    <option value="1">Low Priority</option>
-                    <option value="2">Medium Priority</option>
-                    <option value="3">High Priority</option>
-                    <option value="4">Essential</option>
-                </select>
-            </div>
-            <div class="d-flex">
-                <textarea rows="4" class="form-control" id="request_description" name="request_description" placeholder="Request Description..." required></textarea>
-            </div>
-            <div class="d-flex flex-column gap-2">
-                <input type="text" class="form-control" id="request_budget" name="request_budget" placeholder="Cost Adjustment" required>
-                <input type="text" class="form-control" id="request_time" name="request_time" placeholder="Time adjustment" required>
-            </div>
+          <div class="d-flex gap-2">
+            <input type="text" class="form-control" id="request_title" name="request_title" placeholder="Request Title..." required>
+            <input type="date" class="form-control" id="prefilled_date" disabled>
+          </div>
+          <div class="d-flex flex-column gap-1">
+            <label for="request_assigner">Request Made By:</label>
+            <?php echo "<input type='text' class='form-control' id='request_assigner' value='" . $_SESSION['firstName'] . " " . $_SESSION['lastName'] . "' disabled>"; ?>
+          </div>
+          <div class="d-flex flex-column gap-1">
+            <label for="request_priority"></label>
+            <select class="form-select" id="request_priority" name="request_priority" required>
+              <option value="" selected disabled>Select Priority Level</option>
+              <option value="1">Low Priority</option>
+              <option value="2">Medium Priority</option>
+              <option value="3">High Priority</option>
+              <option value="4">Essential</option>
+            </select>
+          </div>
+          <div class="d-flex">
+            <textarea rows="4" class="form-control" id="request_description" name="request_description" placeholder="Request Description..." required></textarea>
+          </div>
+          <div class="d-flex flex-column gap-2">
+            <input type="text" class="form-control" id="request_budget" name="request_budget" placeholder="Cost Adjustment" required>
+            <input type="text" class="form-control" id="request_time" name="request_time" placeholder="Time adjustment" required>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
