@@ -25,7 +25,7 @@ $result = executeCommandNoParams($SQL);
             while ($row = $result->fetch_assoc()) {
                 // This needs finishing to work fully
                 $data_id = $row['MeetingID'];
-                echo "<div id='scrum_meeting_view_btn' data-id='$data_id' class='card text-center h-25 gap-2' data-bs-toggle='modal' data-bs-target='#scrum_meeting_view_modal'>";
+                echo "<div id='scrum_meeting_view_btn' data-id='$data_id' class='card text-center gap-2' data-bs-toggle='modal' data-bs-target='#scrum_meeting_view_modal'>";
             ?>
                 <div class="card-header">
                     <?php echo $row['MeetingTitle'] ?>

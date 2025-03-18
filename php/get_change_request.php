@@ -26,7 +26,7 @@ if ($result) {
     while ($row = $result->fetch_assoc()) {
         // This needs finishing to work fully
         $data_id = $row['Request_ID'];
-        echo "<div id='change_request_review_btn' data-id='$data_id' class='card text-center h-25 gap-2' data-bs-toggle='modal' data-bs-target='#change_request_review_modal'>";
+        echo "<div id='change_request_review_btn' data-id='$data_id' class='card text-center gap-2' data-bs-toggle='modal' data-bs-target='#change_request_review_modal'>";
         ?>
         <div class="card-header">
             <?php echo $row['Request_Name'] ?>
